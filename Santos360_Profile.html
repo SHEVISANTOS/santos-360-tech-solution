@@ -1,0 +1,1527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SANTOS 360 TECH SOLUTIONS — Company Profile 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+
+/* ═══════════════════════════════════════════════════════
+   DESIGN TOKENS
+═══════════════════════════════════════════════════════ */
+:root {
+  --navy:    #040F1E;
+  --navy2:   #071527;
+  --navy3:   #0B1E35;
+  --card:    #0D2240;
+  --cyan:    #00D4FF;
+  --cyan2:   #00AADD;
+  --blue:    #1A6FD4;
+  --slate:   #8BA5C0;
+  --slateL:  #B8CCE0;
+  --white:   #F2F7FF;
+  --border:  rgba(0,212,255,0.12);
+  --borderM: rgba(0,212,255,0.28);
+  --glow:    rgba(0,212,255,0.15);
+}
+
+/* ═══════════════════════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #020810;
+  color: var(--white);
+  line-height: 1.6;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+h1,h2,h3,h4 { font-family: 'Inter', sans-serif; }
+.display { font-family: 'Syne', sans-serif; font-weight: 800; }
+
+/* ═══════════════════════════════════════════════════════
+   PAGE SHELL — A4
+═══════════════════════════════════════════════════════ */
+.page {
+  width: 210mm;
+  min-height: 297mm;
+  margin: 18px auto;
+  position: relative;
+  overflow: hidden;
+  page-break-after: always;
+  background: var(--navy);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+}
+
+/* ═══════════════════════════════════════════════════════
+   RECURRING CHROME — header / footer strip
+═══════════════════════════════════════════════════════ */
+.chrome-top {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 10mm;
+  background: var(--navy2);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12mm;
+  z-index: 10;
+}
+.chrome-top .brand {
+  font-family: 'Syne', sans-serif;
+  font-size: 8.5pt;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--cyan);
+}
+.chrome-top .section-tag {
+  font-size: 7.5pt;
+  color: var(--slate);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.chrome-bottom {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 9mm;
+  background: var(--navy2);
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12mm;
+}
+.chrome-bottom span {
+  font-size: 7.5pt;
+  color: var(--slate);
+}
+.chrome-bottom .pgnum {
+  font-weight: 700;
+  color: var(--cyan);
+  font-size: 8pt;
+}
+
+/* Content area sits between chrome strips */
+.content {
+  padding: 14mm 12mm 13mm;
+  margin-top: 10mm;
+  min-height: calc(297mm - 19mm);
+}
+
+/* ═══════════════════════════════════════════════════════
+   TYPOGRAPHY SYSTEM
+═══════════════════════════════════════════════════════ */
+.page-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 26pt;
+  color: var(--white);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin-bottom: 4mm;
+}
+.page-title span { color: var(--cyan); }
+
+.section-heading {
+  font-size: 10pt;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 6mm;
+  margin-top: 6mm;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.section-heading::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--border), transparent);
+}
+
+.body-text {
+  font-size: 10pt;
+  color: var(--slateL);
+  line-height: 1.75;
+  margin-bottom: 4mm;
+}
+
+/* ═══════════════════════════════════════════════════════
+   CARDS & SURFACES
+═══════════════════════════════════════════════════════ */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 5mm 5mm;
+  position: relative;
+  overflow: hidden;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--cyan), var(--blue));
+}
+
+.card-accent {
+  background: linear-gradient(135deg, rgba(0,212,255,0.08), rgba(26,111,212,0.08));
+  border: 1px solid var(--borderM);
+  border-radius: 10px;
+  padding: 5mm 5mm;
+}
+
+.pill {
+  display: inline-block;
+  background: rgba(0,212,255,0.1);
+  border: 1px solid rgba(0,212,255,0.25);
+  color: #7dd9f5;
+  padding: 3px 12px;
+  border-radius: 100px;
+  font-size: 8.5pt;
+  font-weight: 600;
+  margin: 3px;
+}
+
+/* ═══════════════════════════════════════════════════════
+   GRID UTILITIES
+═══════════════════════════════════════════════════════ */
+.g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
+.g3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4mm; }
+.g4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 3mm; }
+.g2-3 { display: grid; grid-template-columns: 2fr 3fr; gap: 5mm; }
+.g3-2 { display: grid; grid-template-columns: 3fr 2fr; gap: 5mm; }
+
+/* ═══════════════════════════════════════════════════════
+   ICON BOX
+═══════════════════════════════════════════════════════ */
+.icon-box {
+  width: 36px; height: 36px;
+  background: linear-gradient(135deg, rgba(0,212,255,0.15), rgba(26,111,212,0.15));
+  border: 1px solid rgba(0,212,255,0.3);
+  border-radius: 9px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15pt;
+  margin-bottom: 3mm;
+  flex-shrink: 0;
+}
+
+/* ═══════════════════════════════════════════════════════
+   SERVICE / BULLET ITEMS
+═══════════════════════════════════════════════════════ */
+.service-list { list-style: none; padding: 0; }
+.service-list li {
+  font-size: 9.5pt;
+  color: var(--slateL);
+  padding: 2.5px 0 2.5px 14px;
+  position: relative;
+  line-height: 1.5;
+}
+.service-list li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 9px;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--cyan);
+  opacity: 0.7;
+}
+
+/* ═══════════════════════════════════════════════════════
+   STAT BLOCKS
+═══════════════════════════════════════════════════════ */
+.stat-num {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 26pt;
+  background: linear-gradient(110deg, var(--cyan), var(--blue));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1;
+}
+.stat-label {
+  font-size: 8pt;
+  color: var(--slate);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 3px;
+}
+
+/* ═══════════════════════════════════════════════════════
+   VALUE CARDS (core values grid)
+═══════════════════════════════════════════════════════ */
+.value-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 4mm 3mm 3mm;
+  text-align: center;
+}
+.value-card .vi { font-size: 18pt; margin-bottom: 2mm; }
+.value-card p {
+  font-size: 8.5pt;
+  font-weight: 600;
+  color: var(--slateL);
+  margin: 0;
+}
+
+/* ═══════════════════════════════════════════════════════
+   TOC ROWS
+═══════════════════════════════════════════════════════ */
+.toc-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3.5mm 3mm;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.2s;
+}
+.toc-row:last-child { border-bottom: none; }
+.toc-row .toc-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 9pt;
+  font-weight: 800;
+  color: var(--cyan);
+  opacity: 0.5;
+  width: 22px;
+  flex-shrink: 0;
+}
+.toc-row .toc-title {
+  flex: 1;
+  font-size: 10pt;
+  font-weight: 500;
+  color: var(--slateL);
+  padding-left: 8px;
+}
+.toc-row .toc-pg {
+  font-size: 9pt;
+  font-weight: 700;
+  color: var(--cyan);
+}
+
+/* ═══════════════════════════════════════════════════════
+   INDUSTRY CHIPS
+═══════════════════════════════════════════════════════ */
+.industry-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 4mm 2mm;
+  gap: 2mm;
+}
+.industry-chip .ic-icon { font-size: 18pt; }
+.industry-chip .ic-label { font-size: 7.5pt; font-weight: 600; color: var(--slateL); }
+
+/* ═══════════════════════════════════════════════════════
+   CSR ITEMS
+═══════════════════════════════════════════════════════ */
+.csr-item {
+  display: flex;
+  gap: 3mm;
+  align-items: flex-start;
+  margin-bottom: 4mm;
+}
+.csr-icon {
+  width: 32px; height: 32px;
+  background: rgba(0,212,255,0.1);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13pt;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.csr-title { font-size: 9.5pt; font-weight: 700; color: var(--white); margin-bottom: 1mm; }
+.csr-body  { font-size: 8.5pt; color: var(--slate); line-height: 1.55; }
+
+/* ═══════════════════════════════════════════════════════
+   TECH BADGE ROWS
+═══════════════════════════════════════════════════════ */
+.tech-row { display: flex; flex-wrap: wrap; gap: 3px; margin-bottom: 3mm; }
+
+/* ═══════════════════════════════════════════════════════
+   IoT SPECIFIC STYLES
+═══════════════════════════════════════════════════════ */
+.iot-card {
+  background: linear-gradient(135deg, rgba(0,212,255,0.07), rgba(26,111,212,0.05));
+  border: 1px solid rgba(0,212,255,0.2);
+  border-radius: 10px;
+  padding: 4mm;
+  position: relative;
+  overflow: hidden;
+}
+.iot-card::after {
+  content: '';
+  position: absolute;
+  bottom: -20px; right: -20px;
+  width: 70px; height: 70px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,212,255,0.1), transparent);
+}
+.iot-card h4 { font-size: 9.5pt; font-weight: 700; color: var(--white); margin-bottom: 2mm; }
+.iot-card ul { list-style: none; padding: 0; }
+.iot-card ul li {
+  font-size: 8.5pt; color: var(--slate); padding: 1.5px 0 1.5px 10px;
+  position: relative;
+}
+.iot-card ul li::before {
+  content: '›';
+  position: absolute; left: 0;
+  color: var(--cyan); font-weight: 700;
+}
+
+/* ═══════════════════════════════════════════════════════
+   PRINT
+═══════════════════════════════════════════════════════ */
+@media print {
+  body { background: none; }
+  .page { box-shadow: none; margin: 0; width: 100%; }
+}
+
+@media screen and (max-width: 820px) {
+  .page { width: 100%; min-height: auto; }
+  .g2,.g3,.g4,.g2-3,.g3-2 { grid-template-columns: 1fr; }
+}
+
+  </style>
+</head>
+<body>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 1 — COVER
+══════════════════════════════════════════════════════════ -->
+<div class="page" style="background:linear-gradient(160deg,#02080F 0%,#071830 55%,#081D3A 100%);">
+  <!-- Grid overlay -->
+  <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(0,212,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,0.03) 1px,transparent 1px);background-size:14mm 14mm;pointer-events:none;"></div>
+
+  <!-- Top accent line -->
+  <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--cyan),var(--blue),transparent);"></div>
+
+  <!-- Glow blobs -->
+  <div style="position:absolute;top:-60px;right:-80px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(0,212,255,0.12),transparent);pointer-events:none;"></div>
+  <div style="position:absolute;bottom:80px;left:-60px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(26,111,212,0.12),transparent);pointer-events:none;"></div>
+
+  <!-- Orbit ring -->
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:160mm;height:160mm;border-radius:50%;border:1px dashed rgba(0,212,255,0.1);pointer-events:none;"></div>
+
+  <!-- Content -->
+  <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:297mm;padding:20mm;text-align:center;">
+
+    <!-- Logo mark -->
+    <div style="width:70px;height:70px;border-radius:18px;background:linear-gradient(135deg,var(--cyan),var(--blue));display:flex;align-items:center;justify-content:center;margin-bottom:8mm;box-shadow:0 0 40px rgba(0,212,255,0.35);">
+      <span style="font-family:'Syne',sans-serif;font-weight:800;font-size:22pt;color:#040F1E;">S</span>
+    </div>
+
+    <!-- Company name -->
+    <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:38pt;color:#F2F7FF;line-height:1.05;letter-spacing:-0.01em;margin-bottom:3mm;">
+      SANTOS <span style="color:var(--cyan);">360</span>
+    </div>
+    <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:22pt;color:rgba(242,247,255,0.65);letter-spacing:0.06em;margin-bottom:8mm;">
+      TECH SOLUTIONS
+    </div>
+
+    <!-- Tagline -->
+    <div style="font-size:11.5pt;color:var(--cyan);font-weight:300;letter-spacing:0.18em;margin-bottom:10mm;text-transform:uppercase;">
+      Innovating Today · Empowering Tomorrow
+    </div>
+
+    <!-- Divider -->
+    <div style="width:80mm;height:1px;background:linear-gradient(90deg,transparent,rgba(0,212,255,0.4),transparent);margin-bottom:8mm;"></div>
+
+    <!-- Services strip -->
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:6px;max-width:140mm;margin-bottom:12mm;">
+      <span class="pill">Software Development</span>
+      <span class="pill">Cybersecurity</span>
+      <span class="pill">Cloud Computing</span>
+      <span class="pill">IoT Solutions</span>
+      <span class="pill">Artificial Intelligence</span>
+      <span class="pill">ICT Consultancy</span>
+    </div>
+
+    <!-- Year badge -->
+    <div style="padding:6px 20px;border-radius:100px;border:1px solid rgba(0,212,255,0.25);background:rgba(0,212,255,0.06);font-size:10pt;color:rgba(242,247,255,0.55);letter-spacing:0.14em;font-weight:600;">
+      COMPANY PROFILE 2026
+    </div>
+  </div>
+
+  <!-- Bottom accent -->
+  <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--blue),var(--cyan),transparent);"></div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 2 — TABLE OF CONTENTS
+══════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="chrome-top">
+    <span class="brand">SANTOS 360 TECH SOLUTIONS</span>
+    <span class="section-tag">Company Profile 2026</span>
+  </div>
+  <div class="content">
+    <div style="margin-bottom:6mm;">
+      <div style="font-size:8pt;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--cyan);margin-bottom:2mm;">Navigation</div>
+      <div class="page-title display">Table of <span>Contents</span></div>
+    </div>
+
+    <div style="margin-top:4mm;">
+      <div class="toc-row"><span class="toc-num">01</span><span class="toc-title">Company Overview</span><span class="toc-pg">03</span></div>
+      <div class="toc-row"><span class="toc-num">02</span><span class="toc-title">About Us</span><span class="toc-pg">04</span></div>
+      <div class="toc-row"><span class="toc-num">03</span><span class="toc-title">Vision, Mission & Core Values</span><span class="toc-pg">05</span></div>
+      <div class="toc-row"><span class="toc-num">04</span><span class="toc-title">Our Services Portfolio</span><span class="toc-pg">06</span></div>
+      <div class="toc-row"><span class="toc-num">05</span><span class="toc-title">Software Development</span><span class="toc-pg">07</span></div>
+      <div class="toc-row"><span class="toc-num">06</span><span class="toc-title">Cybersecurity & Networking</span><span class="toc-pg">08</span></div>
+      <div class="toc-row"><span class="toc-num">07</span><span class="toc-title">Cloud Computing & Digital Transformation</span><span class="toc-pg">09</span></div>
+      <div class="toc-row"><span class="toc-num">08</span><span class="toc-title">Artificial Intelligence & Data Science</span><span class="toc-pg">10</span></div>
+      <div class="toc-row"><span class="toc-num">09</span><span class="toc-title">IoT Solutions & Smart Technology</span><span class="toc-pg">11</span></div>
+      <div class="toc-row"><span class="toc-num">10</span><span class="toc-title">Our Competitive Advantage</span><span class="toc-pg">12</span></div>
+      <div class="toc-row"><span class="toc-num">11</span><span class="toc-title">Industries We Serve</span><span class="toc-pg">13</span></div>
+      <div class="toc-row"><span class="toc-num">12</span><span class="toc-title">Projects & Portfolio</span><span class="toc-pg">14</span></div>
+      <div class="toc-row"><span class="toc-num">13</span><span class="toc-title">Corporate Social Responsibility</span><span class="toc-pg">15</span></div>
+      <div class="toc-row"><span class="toc-num">14</span><span class="toc-title">Contact Information</span><span class="toc-pg">16</span></div>
+    </div>
+
+    <!-- Decorative stats row -->
+    <div class="card-accent g4" style="margin-top:8mm;text-align:center;">
+      <div><div class="stat-num">150+</div><div class="stat-label">Projects</div></div>
+      <div><div class="stat-num">14</div><div class="stat-label">Services</div></div>
+      <div><div class="stat-num">12+</div><div class="stat-label">Industries</div></div>
+      <div><div class="stat-num">99%</div><div class="stat-label">Satisfaction</div></div>
+    </div>
+  </div>
+  <div class="chrome-bottom"><span>www.santos360tech.com</span><span class="pgnum">02 / 16</span></div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 3 — COMPANY OVERVIEW
+══════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="chrome-top">
+    <span class="brand">SANTOS 360 TECH SOLUTIONS</span>
+    <span class="section-tag">Company Overview</span>
+  </div>
+  <div class="content">
+    <div style="margin-bottom:5mm;">
+      <div style="font-size:8pt;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--cyan);margin-bottom:2mm;">01 — Who We Are</div>
+      <div class="page-title display">Company <span>Overview</span></div>
+    </div>
+
+    <div class="g2-3" style="margin-bottom:5mm;">
+      <div>
+        <p class="body-text">SANTOS 360 TECH SOLUTIONS is a forward-thinking Information Technology company delivering world-class digital solutions across Tanzania and beyond.</p>
+        <p class="body-text">We serve businesses, educational institutions, government agencies, and individuals — providing a complete technology ecosystem from development to deployment and support.</p>
+
+        <div class="section-heading" style="margin-top:5mm;">At a Glance</div>
+        <div style="display:flex;flex-direction:column;gap:2.5mm;">
+          <div style="display:flex;gap:3mm;align-items:center;">
+            <div style="width:6px;height:6px;border-radius:50%;background:var(--cyan);flex-shrink:0;"></div>
+            <span style="font-size:9.5pt;color:var(--slateL);"><strong style="color:var(--white);">Founded:</strong> Tanzania, East Africa</span>
+          </div>
+          <div style="display:flex;gap:3mm;align-items:center;">
+            <div style="width:6px;height:6px;border-radius:50%;background:var(--cyan);flex-shrink:0;"></div>
+            <span style="font-size:9.5pt;color:var(--slateL);"><strong style="color:var(--white);">Focus:</strong> End-to-End ICT Solutions</span>
+          </div>
+          <div style="display:flex;gap:3mm;align-items:center;">
+            <div style="width:6px;height:6px;border-radius:50%;background:var(--cyan);flex-shrink:0;"></div>
+            <span style="font-size:9.5pt;color:var(--slateL);"><strong style="color:var(--white);">Reach:</strong> National & International</span>
+          </div>
+          <div style="display:flex;gap:3mm;align-items:center;">
+            <div style="width:6px;height:6px;border-radius:50%;background:var(--cyan);flex-shrink:0;"></div>
+            <span style="font-size:9.5pt;color:var(--slateL);"><strong style="color:var(--white);">Website:</strong> www.santos360tech.com</span>
+          </div>
+          <div style="display:flex;gap:3mm;align-items:center;">
+            <div style="width:6px;height:6px;border-radius:50%;background:var(--cyan);flex-shrink:0;"></div>
+            <span style="font-size:9.5pt;color:var(--slateL);"><strong style="color:var(--white);">Email:</strong> info@santos360tech.com</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats column -->
+      <div style="display:flex;flex-direction:column;gap:3mm;">
+        <div class="card" style="text-align:center;padding:5mm;">
+          <div class="stat-num">150+</div>
+          <div class="stat-label">Successful Projects</div>
+        </div>
+        <div class="card" style="text-align:center;padding:5mm;">
+          <div class="stat-num">12+</div>
+          <div class="stat-label">Industries Served</div>
+        </div>
+        <div class="card" style="text-align:center;padding:5mm;">
+          <div class="stat-num">99%</div>
+          <div class="stat-label">Client Satisfaction</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Philosophy quote -->
+    <div style="background:linear-gradient(135deg,rgba(0,212,255,0.08),rgba(26,111,212,0.06));border:1px solid var(--borderM);border-radius:10px;padding:5mm 6mm;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:-8px;left:8mm;font-size:40pt;color:var(--cyan);opacity:0.18;font-family:Georgia,serif;line-height:1;">"</div>
+      <p style="font-size:11.5pt;color:var(--white);font-style:italic;line-height:1.65;margin:0 0 2mm;position:relative;z-index:1;">We believe technology should simplify business operations while increasing productivity, efficiency, security, and profitability.</p>
+      <div style="font-size:8.5pt;color:var(--cyan);font-weight:600;letter-spacing:0.08em;">— SANTOS 360 PHILOSOPHY</div>
+    </div>
+  </div>
+  <div class="chrome-bottom"><span>www.santos360tech.com</span><span class="pgnum">03 / 16</span></div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 4 — ABOUT US
+══════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="chrome-top">
+    <span class="brand">SANTOS 360 TECH SOLUTIONS</span>
+    <span class="section-tag">About Us</span>
+  </div>
+  <div class="content">
+    <div style="margin-bottom:5mm;">
+      <div style="font-size:8pt;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--cyan);margin-bottom:2mm;">02 — Our Story</div>
+      <div class="page-title display">About <span>Us</span></div>
+    </div>
+
+    <p class="body-text">Founded with a passion for innovation and technology, SANTOS 360 TECH SOLUTIONS exists to bridge the digital gap by providing affordable, reliable, and scalable IT solutions to organizations of every size across Tanzania and the broader African market.</p>
+    <p class="body-text">Our experienced professionals work closely with clients to understand their business challenges and develop customized technology solutions that produce measurable, lasting results. We continuously invest in research, innovation, and emerging technologies to ensure our clients remain competitive in an ever-evolving digital era.</p>
+
+    <div class="section-heading">What Sets Us Apart</div>
+    <div class="g2" style="margin-bottom:5mm;">
+      <div class="card">
+        <div style="font-size:20pt;margin-bottom:2mm;">💡</div>
+        <div style="font-size:10pt;font-weight:700;color:var(--white);margin-bottom:1.5mm;">Innovation Driven</div>
+        <p style="font-size:9pt;color:var(--slate);margin:0;line-height:1.55;">Continuously investing in emerging technologies to keep clients ahead of the curve and ready for tomorrow.</p>
+      </div>
+      <div class="card">
+        <div style="font-size:20pt;margin-bottom:2mm;">🤝</div>
+        <div style="font-size:10pt;font-weight:700;color:var(--white);margin-bottom:1.5mm;">Client Focused</div>
+        <p style="font-size:9pt;color:var(--slate);margin:0;line-height:1.55;">Working closely with clients to understand unique challenges and deliver tailored solutions that generate measurable impact.</p>
+      </div>
+      <div class="card">
+        <div style="font-size:20pt;margin-bottom:2mm;">🔒</div>
+        <div style="font-size:10pt;font-weight:700;color:var(--white);margin-bottom:1.5mm;">Security First</div>
+        <p style="font-size:9pt;color:var(--slate);margin:0;line-height:1.55;">Every solution we deliver is built with security by design, using international best practices and compliance standards.</p>
+      </div>
+      <div class="card">
+        <div style="font-size:20pt;margin-bottom:2mm;">🌍</div>
+        <div style="font-size:10pt;font-weight:700;color:var(--white);margin-bottom:1.5mm;">Africa-Ready</div>
+        <p style="font-size:9pt;color:var(--slate);margin:0;line-height:1.55;">Solutions designed for local infrastructure realities — low-bandwidth resilience, local language support, affordable pricing.</p>
+      </div>
+    </div>
+
+    <!-- Milestone strip -->
+    <div class="section-heading">Key Milestones</div>
+    <div style="display:flex;gap:0;position:relative;">
+      <div style="position:absolute;top:16px;left:12%;right:12%;height:1px;background:linear-gradient(90deg,var(--border),var(--borderM),var(--border));"></div>
+      <div style="flex:1;text-align:center;position:relative;">
+        <div style="width:14px;height:14px;border-radius:50%;background:var(--cyan);border:2px solid var(--navy);margin:0 auto 3mm;position:relative;z-index:1;"></div>
+        <div style="font-size:8.5pt;font-weight:700;color:var(--white);">Founded</div>
+        <div style="font-size:8pt;color:var(--slate);">Tanzania</div>
+      </div>
+      <div style="flex:1;text-align:center;position:relative;">
+        <div style="width:14px;height:14px;border-radius:50%;background:var(--blue);border:2px solid var(--navy);margin:0 auto 3mm;position:relative;z-index:1;"></div>
+        <div style="font-size:8.5pt;font-weight:700;color:var(--white);">100+ Projects</div>
+        <div style="font-size:8pt;color:var(--slate);">Delivered</div>
+      </div>
+      <div style="flex:1;text-align:center;position:relative;">
+        <div style="width:14px;height:14px;border-radius:50%;background:var(--cyan);border:2px solid var(--navy);margin:0 auto 3mm;position:relative;z-index:1;"></div>
+        <div style="font-size:8.5pt;font-weight:700;color:var(--white);">AI & IoT</div>
+        <div style="font-size:8pt;color:var(--slate);">Expansion</div>
+      </div>
+      <div style="flex:1;text-align:center;position:relative;">
+        <div style="width:14px;height:14px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),var(--blue));border:2px solid var(--navy);margin:0 auto 3mm;position:relative;z-index:1;box-shadow:0 0 10px rgba(0,212,255,0.5);"></div>
+        <div style="font-size:8.5pt;font-weight:700;color:var(--white);">2026 Profile</div>
+        <div style="font-size:8pt;color:var(--cyan);">Present</div>
+      </div>
+    </div>
+  </div>
+  <div class="chrome-bottom"><span>www.santos360tech.com</span><span class="pgnum">04 / 16</span></div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 5 — VISION, MISSION & VALUES
+══════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="chrome-top">
+    <span class="brand">SANTOS 360 TECH SOLUTIONS</span>
+    <span class="section-tag">Vision & Mission</span>
+  </div>
+  <div class="content">
+    <div style="margin-bottom:5mm;">
+      <div style="font-size:8pt;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--cyan);margin-bottom:2mm;">03 — Direction & Values</div>
+      <div class="page-title display">Vision, Mission <span>&</span> Core Values</div>
+    </div>
+
+    <div class="g2" style="margin-bottom:5mm;">
+      <div style="background:linear-gradient(135deg,rgba(26,111,212,0.12),rgba(0,212,255,0.06));border:1px solid rgba(26,111,212,0.35);border-radius:10px;padding:5mm;">
+        <div style="font-size:9pt;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#7dd9f5;margin-bottom:2mm;">👁 Our Vision</div>
+        <p style="font-size:10.5pt;color:var(--white);line-height:1.65;margin:0;">To become one of Africa's leading providers of innovative technology solutions, empowering organizations through transformative digital solutions that drive measurable growth.</p>
+      </div>
+      <div style="background:linear-gradient(135deg,rgba(0,212,255,0.1),rgba(26,111,212,0.06));border:1px solid rgba(0,212,255,0.3);border-radius:10px;padding:5mm;">
+        <div style="font-size:9pt;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--cyan);margin-bottom:2mm;">🚀 Our Mission</div>
+        <p style="font-size:10.5pt;color:var(--white);line-height:1.65;margin:0;">To deliver reliable, secure, and innovative technology solutions that enable businesses and communities to achieve sustainable growth in the digital age.</p>
+      </div>
+    </div>
+
+    <div class="section-heading">Core Values</div>
+    <div class="g4">
+      <div class="value-card"><div class="vi">💡</div><p>Innovation</p></div>
+      <div class="value-card"><div class="vi">🛡</div><p>Integrity</p></div>
+      <div class="value-card"><div class="vi">🏆</div><p>Excellence</p></div>
+      <div class="value-card"><div class="vi">👔</div><p>Professionalism</p></div>
+      <div class="value-card"><div class="vi">😊</div><p>Client Satisfaction</p></div>
+      <div class="value-card"><div class="vi">🤝</div><p>Teamwork</p></div>
+      <div class="value-card"><div class="vi">✅</div><p>Accountability</p></div>
+      <div class="value-card"><div class="vi">📚</div><p>Continuous Learning</p></div>
+    </div>
+
+    <!-- Divider principle card -->
+    <div style="margin-top:5mm;background:linear-gradient(90deg,rgba(0,212,255,0.05),rgba(26,111,212,0.05));border-left:3px solid var(--cyan);border-radius:0 8px 8px 0;padding:4mm 5mm;">
+      <p style="font-size:10.5pt;color:var(--slateL);font-style:italic;line-height:1.7;margin:0;">Every decision we make is guided by one question: <strong style="color:var(--white);">Does this create genuine, lasting value for our clients?</strong></p>
+    </div>
+  </div>
+  <div class="chrome-bottom"><span>www.santos360tech.com</span><span class="pgnum">05 / 16</span></div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 6 — SERVICES OVERVIEW
+══════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="chrome-top">
+    <span class="brand">SANTOS 360 TECH SOLUTIONS</span>
+    <span class="section-tag">Services Portfolio</span>
+  </div>
+  <div class="content">
+    <div style="margin-bottom:5mm;">
+      <div style="font-size:8pt;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--cyan);margin-bottom:2mm;">04 — What We Offer</div>
+      <div class="page-title display">Our <span>Services</span> Portfolio</div>
+    </div>
+    <p class="body-text" style="margin-bottom:5mm;">A comprehensive suite of ICT services designed to meet the diverse and evolving needs of modern organisations.</p>
+
+    <div class="g3">
+      <div class="card">
+        <div style="font-size:18pt;margin-bottom:2mm;">💻</div>
+        <div style="font-size:10pt;font-weight:700;color:var(--white);margin-bottom:2mm;">Software Development</div>
+        <ul class="service-list">
+          <li>Web Applications</li>
+          <li>Mobile Apps (Android/iOS)</li>
+          <li>Enterprise Systems</li>
+          <li>School & Hospital Systems</li>
+          <li>E-Commerce Platforms</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div style="font-size:18pt;margin-bottom:2mm;">🌐</div>
+        <div style="font-size:10pt;font-weight:700;color:var(--white);margin-bottom:2mm;">Website Development</div>
+        <ul class="service-list">
+          <li>Corporate Websites</li>
+          <li>E-Commerce Stores</li>
+          <li>Government Portals</li>
+          <li>NGO & Institutional Sites</li>
+          <li>Blog & News Platforms</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div style="font-size:18pt;margin-bottom:2mm;">📊</div>
+        <div style="font-size:10pt;font-weight:700;color:var(--white);margin-bottom:2mm;">ICT Consultancy</div>
+        <ul class="service-list">
+          <li>Digital Strategy</li>
+          <li>IT Auditing</li>
+          <li>Business Process Automation</li>
+          <li>Infrastructure Planning</li>
+          <li>Compliance & Governance</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div style="font-size:18pt;margin-bottom:2mm;">🔒</div>
+        <div style="font-size:10pt;font-weight:700;color:var(--white);margin-bottom:2mm;">Cybersecurity</div>
+        <ul class="service-list">
+          <li>Vulnerability Assessment</li>
+          <li>Penetration Testing</li>
+          <li>Firewall Configuration</li>
+          <li>Incident Response</li>
+          <li>Security Training</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div style="font-size:18pt;margin-bottom:2mm;">☁</div>
+        <div style="font-size:10pt;font-weight:700;color:var(--white);margin-bottom:2mm;">Cloud Computing</div>
+        <ul class="service-list">
+          <li>Cloud Migration</li>
+          <li>Disaster Recovery</li>
+          <li>IaaS / SaaS Solutions</li>
+          <li>Cloud Security</li>
+          <li>Digital Transformation</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div style="font-size:18pt;margin-bottom:2mm;">🤖</div>
+        <div style="font-size:10pt;font-weight:700;color:var(--white);margin-bottom:2mm;">AI & IoT</div>
+        <ul class="service-list">
+          <li>Machine Learning Models</li>
+          <li>Smart Sensor Networks</li>
+          <li>Predictive Analytics</li>
+          <li>Computer Vision</li>
+          <li>Smart Agriculture</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="chrome-bottom"><span>www.santos360tech.com</span><span class="pgnum">06 / 16</span></div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 7 — SOFTWARE DEVELOPMENT
+══════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="chrome-top">
+    <span class="brand">SANTOS 360 TECH SOLUTIONS</span>
+    <span class="section-tag">Software Development</span>
+  </div>
+  <div class="content">
+    <div style="margin-bottom:5mm;">
+      <div style="font-size:8pt;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--cyan);margin-bottom:2mm;">05 — Build & Deploy</div>
+      <div class="page-title display">Software <span>Development</span></div>
+    </div>
+    <p class="body-text">We build modern, scalable, and secure software solutions tailored to client requirements — from lightweight web apps to complex enterprise platforms.</p>
+
+    <div class="section-heading">Technology Stack</div>
+    <div class="tech-row">
+      <span class="pill">Python</span><span class="pill">Django</span><span class="pill">Java</span><span class="pill">JavaScript</span><span class="pill">TypeScript</span><span class="pill">PHP</span><span class="pill">Laravel</span><span class="pill">React</span><span class="pill">Vue.js</span><span class="pill">Flutter</span><span class="pill">Node.js</span><span class="pill">SQL</span><span class="pill">NoSQL</span><span class="pill">REST APIs</span>
+    </div>
+
+    <div class="section-heading">Custom Solution Categories</div>
+    <div class="g2">
+      <div style="display:flex;flex-direction:column;gap:2.5mm;">
+        <div style="display:flex;gap:3mm;align-items:center;padding:2.5mm 3mm;background:var(--card);border-radius:7px;border:1px solid var(--border);">
+          <span style="font-size:14pt;">👥</span><span style="font-size:9.5pt;color:var(--slateL);">HR & Payroll Management Systems</span>
+        </div>
+        <div style="display:flex;gap:3mm;align-items:center;padding:2.5mm 3mm;background:var(--card);border-radius:7px;border:1px solid var(--border);">
+          <span style="font-size:14pt;">📦</span><span style="font-size:9.5pt;color:var(--slateL);">Inventory Management Systems</span>
+        </div>
+        <div style="display:flex;gap:3mm;align-items:center;padding:2.5mm 3mm;background:var(--card);border-radius:7px;border:1px solid var(--border);">
+          <span style="font-size:14pt;">🏪</span><span style="font-size:9.5pt;color:var(--slateL);">Point of Sale (POS) Systems</span>
+        </div>
+        <div style="display:flex;gap:3mm;align-items:center;padding:2.5mm 3mm;background:var(--card);border-radius:7px;border:1px solid var(--border);">
+          <span style="font-size:14pt;">💰</span><span style="font-size:9.5pt;color:var(--slateL);">Financial Management Systems</span>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:2.5mm;">
+        <div style="display:flex;gap:3mm;align-items:center;padding:2.5mm 3mm;background:var(--card);border-radius:7px;border:1px solid var(--border);">
+          <span style="font-size:14pt;">🏥</span><span style="font-size:9.5pt;color:var(--slateL);">Hospital Information Systems</span>
+        </div>
+        <div style="display:flex;gap:3mm;align-items:center;padding:2.5mm 3mm;background:var(--card);border-radius:7px;border:1px solid var(--border);">
+          <span style="font-size:14pt;">🎓</span><span style="font-size:9.5pt;color:var(--slateL);">Student Information Systems</span>
+        </div>
+        <div style="display:flex;gap:3mm;align-items:center;padding:2.5mm 3mm;background:var(--card);border-radius:7px;border:1px solid var(--border);">
+          <span style="font-size:14pt;">🛒</span><span style="font-size:9.5pt;color:var(--slateL);">E-Commerce & Marketplace Platforms</span>
+        </div>
+        <div style="display:flex;gap:3mm;align-items:center;padding:2.5mm 3mm;background:var(--card);border-radius:7px;border:1px solid var(--border);">
+          <span style="font-size:14pt;">📱</span><span style="font-size:9.5pt;color:var(--slateL);">Cross-Platform Mobile Applications</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:5mm;background:var(--card);border:1px solid var(--borderM);border-radius:10px;padding:4mm 5mm;display:grid;grid-template-columns:1fr 1fr 1fr;gap:3mm;text-align:center;">
+      <div><div style="font-size:9.5pt;color:var(--cyan);font-weight:700;margin-bottom:1mm;">Agile</div><div style="font-size:8.5pt;color:var(--slate);">Development Methodology</div></div>
+      <div><div style="font-size:9.5pt;color:var(--cyan);font-weight:700;margin-bottom:1mm;">CI/CD</div><div style="font-size:8.5pt;color:var(--slate);">Continuous Integration</div></div>
+      <div><div style="font-size:9.5pt;color:var(--cyan);font-weight:700;margin-bottom:1mm;">ISO 27001</div><div style="font-size:8.5pt;color:var(--slate);">Security Standards</div></div>
+    </div>
+  </div>
+  <div class="chrome-bottom"><span>www.santos360tech.com</span><span class="pgnum">07 / 16</span></div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 8 — CYBERSECURITY & NETWORKING
+══════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="chrome-top">
+    <span class="brand">SANTOS 360 TECH SOLUTIONS</span>
+    <span class="section-tag">Cybersecurity & Networking</span>
+  </div>
+  <div class="content">
+    <div style="margin-bottom:5mm;">
+      <div style="font-size:8pt;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--cyan);margin-bottom:2mm;">06 — Protect & Connect</div>
+      <div class="page-title display">Cybersecurity <span>&</span> Networking</div>
+    </div>
+    <p class="body-text">We protect your digital assets from evolving cyber threats while building robust, high-performance network infrastructure that keeps your organization always connected.</p>
+
+    <div class="g2" style="margin-bottom:5mm;">
+      <div class="card">
+        <div style="font-size:9pt;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--cyan);margin-bottom:3mm;">🛡 Cybersecurity Services</div>
+        <ul class="service-list">
+          <li>Vulnerability Assessment & Risk Analysis</li>
+          <li>Penetration Testing</li>
+          <li>Network Security Design</li>
+          <li>Firewall & IDS/IPS Configuration</li>
+          <li>Security Awareness Training</li>
+          <li>Incident Response & Recovery</li>
+          <li>Endpoint Protection Management</li>
+          <li>Security Operations Monitoring</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div style="font-size:9pt;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--cyan);margin-bottom:3mm;">🌐 Networking Services</div>
+        <ul class="service-list">
+          <li>LAN / WAN Design & Implementation</li>
+          <li>Server Installation & Configuration</li>
+          <li>Router & Switch Configuration</li>
+          <li>Wireless Network Deployment</li>
+          <li>VPN & Remote Access Solutions</li>
+          <li>Structured Cabling Systems</li>
+          <li>Network Monitoring & Management</li>
+          <li>Network Performance Optimisation</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-heading">Certified & Standards-Aligned</div>
+    <div class="g4">
+      <div class="card-accent" style="text-align:center;padding:3mm;">
+        <div style="font-size:9pt;font-weight:700;color:var(--white);">ISO 27001</div>
+        <div style="font-size:8pt;color:var(--slate);margin-top:1mm;">Information Security</div>
+      </div>
+      <div class="card-accent" style="text-align:center;padding:3mm;">
+        <div style="font-size:9pt;font-weight:700;color:var(--white);">NIST CSF</div>
+        <div style="font-size:8pt;color:var(--slate);margin-top:1mm;">Security Framework</div>
+      </div>
+      <div class="card-accent" style="text-align:center;padding:3mm;">
+        <div style="font-size:9pt;font-weight:700;color:var(--white);">CCNA</div>
+        <div style="font-size:8pt;color:var(--slate);margin-top:1mm;">Cisco Networking</div>
+      </div>
+      <div class="card-accent" style="text-align:center;padding:3mm;">
+        <div style="font-size:9pt;font-weight:700;color:var(--white);">GDPR</div>
+        <div style="font-size:8pt;color:var(--slate);margin-top:1mm;">Data Protection</div>
+      </div>
+    </div>
+  </div>
+  <div class="chrome-bottom"><span>www.santos360tech.com</span><span class="pgnum">08 / 16</span></div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 9 — CLOUD & DIGITAL TRANSFORMATION
+══════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="chrome-top">
+    <span class="brand">SANTOS 360 TECH SOLUTIONS</span>
+    <span class="section-tag">Cloud & Digital Transformation</span>
+  </div>
+  <div class="content">
+    <div style="margin-bottom:5mm;">
+      <div style="font-size:8pt;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--cyan);margin-bottom:2mm;">07 — Scale & Transform</div>
+      <div class="page-title display">Cloud <span>&</span> Digital Transformation</div>
+    </div>
+    <p class="body-text">We guide organisations through their cloud journey — from initial strategy and migration to full digital transformation — ensuring continuity, security, and scalability every step of the way.</p>
+
+    <div class="g2" style="margin-bottom:5mm;">
+      <div class="card">
+        <div style="font-size:9pt;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--cyan);margin-bottom:3mm;">☁ Cloud Services</div>
+        <ul class="service-list">
+          <li>Cloud Migration Strategy & Execution</li>
+          <li>Cloud Backup & Archiving</li>
+          <li>Disaster Recovery as a Service</li>
+          <li>Infrastructure as a Service (IaaS)</li>
+          <li>Software as a Service (SaaS)</li>
+          <li>Multi-Cloud Architecture</li>
+          <li>Cloud Security & Compliance</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div style="font-size:9pt;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--cyan);margin-bottom:3mm;">⚡ Digital Transformation</div>
+        <ul class="service-list">
+          <li>Business Process Automation</li>
+          <li>Paperless Office Solutions</li>
+          <li>Electronic Document Management</li>
+          <li>Business Intelligence & Dashboards</li>
+          <li>Workflow Optimisation</li>
+          <li>Digital Strategy Implementation</li>
+          <li>Legacy System Modernisation</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-heading">Cloud Partners & Platforms</div>
+    <div style="display:flex;flex-wrap:wrap;gap:3mm;">
+      <span class="pill">AWS</span>
+      <span class="pill">Microsoft Azure</span>
+      <span class="pill">Google Cloud</span>
+      <span class="pill">Alibaba Cloud</span>
+      <span class="pill">Hetzner</span>
+      <span class="pill">DigitalOcean</span>
+      <span class="pill">Oracle Cloud</span>
+      <span class="pill">Private Cloud</span>
+    </div>
+
+    <div style="margin-top:5mm;display:flex;gap:4mm;">
+      <div class="card" style="flex:1;text-align:center;padding:4mm;">
+        <div style="font-size:18pt;margin-bottom:2mm;">⏱</div>
+        <div style="font-size:9.5pt;font-weight:700;color:var(--white);">99.9% Uptime SLA</div>
+        <div style="font-size:8.5pt;color:var(--slate);margin-top:1mm;">Guaranteed availability</div>
+      </div>
+      <div class="card" style="flex:1;text-align:center;padding:4mm;">
+        <div style="font-size:18pt;margin-bottom:2mm;">🔄</div>
+        <div style="font-size:9.5pt;font-weight:700;color:var(--white);">Automated Backups</div>
+        <div style="font-size:8.5pt;color:var(--slate);margin-top:1mm;">Daily, incremental</div>
+      </div>
+      <div class="card" style="flex:1;text-align:center;padding:4mm;">
+        <div style="font-size:18pt;margin-bottom:2mm;">📈</div>
+        <div style="font-size:9.5pt;font-weight:700;color:var(--white);">Auto-Scaling</div>
+        <div style="font-size:8.5pt;color:var(--slate);margin-top:1mm;">Elastic resources</div>
+      </div>
+    </div>
+  </div>
+  <div class="chrome-bottom"><span>www.santos360tech.com</span><span class="pgnum">09 / 16</span></div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 10 — ARTIFICIAL INTELLIGENCE & DATA SCIENCE
+══════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="chrome-top">
+    <span class="brand">SANTOS 360 TECH SOLUTIONS</span>
+    <span class="section-tag">Artificial Intelligence</span>
+  </div>
+  <div class="content">
+    <div style="margin-bottom:5mm;">
+      <div style="font-size:8pt;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--cyan);margin-bottom:2mm;">08 — Intelligence & Analytics</div>
+      <div class="page-title display">AI & <span>Data Science</span></div>
+    </div>
+    <p class="body-text">We develop intelligent systems that augment human decision-making and automate complex tasks — leveraging cutting-edge machine learning and advanced analytics.</p>
+
+    <div class="g2" style="margin-bottom:5mm;">
+      <div class="card">
+        <div style="font-size:9pt;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--cyan);margin-bottom:3mm;">🤖 AI Services</div>
+        <ul class="service-list">
+          <li>Machine Learning Model Development</li>
+          <li>Deep Learning & Neural Networks</li>
+          <li>Computer Vision Systems</li>
+          <li>Natural Language Processing (NLP)</li>
+          <li>Predictive & Prescriptive Analytics</li>
+          <li>Recommendation Engines</li>
+          <li>Chatbots & Virtual Assistants</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div style="font-size:9pt;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--cyan);margin-bottom:3mm;">🔬 Research Areas</div>
+        <ul class="service-list">
+          <li>Agricultural AI (Plant Disease Detection)</li>
+          <li>Medical Image Analysis</li>
+          <li>Business Intelligence & Analytics</li>
+          <li>Educational Technology (EdTech)</li>
+          <li>Smart City & Urban Planning</li>
+          <li>Financial Fraud Detection</li>
+          <li>Environmental Monitoring</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-heading">AI Frameworks & Tools</div>
+    <div class="tech-row">
+      <span class="pill">TensorFlow</span>
+      <span class="pill">PyTorch</span>
+      <span class="pill">Scikit-learn</span>
+      <span class="pill">OpenCV</span>
+      <span class="pill">Pandas</span>
+      <span class="pill">NumPy</span>
+      <span class="pill">Keras</span>
+      <span class="pill">Hugging Face</span>
+      <span class="pill">LangChain</span>
+      <span class="pill">Jupyter</span>
+    </div>
+
+    <!-- Flagship AI project -->
+    <div style="margin-top:4mm;background:linear-gradient(135deg,rgba(0,212,255,0.08),rgba(26,111,212,0.06));border:1px solid var(--borderM);border-radius:10px;padding:4mm 5mm;">
+      <div style="font-size:9pt;font-weight:700;color:var(--cyan);margin-bottom:1.5mm;">🌿 Flagship Project: Tomato Leaf Disease Detection System</div>
+      <p style="font-size:9.5pt;color:var(--slateL);line-height:1.65;margin:0;">A CNN-based agricultural AI system using an EfficientNetB0 + ResNet50 ensemble (Tomato_ResB0) achieving <strong style="color:var(--white);">99.19% accuracy</strong> — actively contributing to food security in Tanzania.</p>
+    </div>
+  </div>
+  <div class="chrome-bottom"><span>www.santos360tech.com</span><span class="pgnum">10 / 16</span></div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 11 — IoT SOLUTIONS (NEW PAGE)
+══════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="chrome-top">
+    <span class="brand">SANTOS 360 TECH SOLUTIONS</span>
+    <span class="section-tag">IoT Solutions</span>
+  </div>
+  <div class="content">
+    <div style="margin-bottom:5mm;">
+      <div style="font-size:8pt;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--cyan);margin-bottom:2mm;">09 — Internet of Things</div>
+      <div class="page-title display">IoT <span>Solutions</span> & Smart Technology</div>
+    </div>
+    <p class="body-text">We design and deploy Internet of Things ecosystems that connect physical devices to intelligent digital platforms — enabling real-time monitoring, automation, and data-driven decision making across industries.</p>
+
+    <div class="section-heading">IoT Service Domains</div>
+    <div class="g3" style="margin-bottom:5mm;">
+      <div class="iot-card">
+        <div style="font-size:18pt;margin-bottom:2mm;">🌾</div>
+        <h4>Smart Agriculture</h4>
+        <ul>
+          <li>Soil moisture sensors</li>
+          <li>Automated irrigation systems</li>
+          <li>Crop health monitoring</li>
+          <li>Weather data integration</li>
+          <li>Livestock tracking</li>
+        </ul>
+      </div>
+      <div class="iot-card">
+        <div style="font-size:18pt;margin-bottom:2mm;">🏭</div>
+        <h4>Industrial IoT</h4>
+        <ul>
+          <li>Machine condition monitoring</li>
+          <li>Predictive maintenance</li>
+          <li>Production line sensors</li>
+          <li>Energy consumption analytics</li>
+          <li>Asset tracking & management</li>
+        </ul>
+      </div>
+      <div class="iot-card">
+        <div style="font-size:18pt;margin-bottom:2mm;">🏢</div>
+        <h4>Smart Buildings</h4>
+        <ul>
+          <li>Automated lighting systems</li>
+          <li>HVAC smart control</li>
+          <li>Access control & biometrics</li>
+          <li>Energy management</li>
+          <li>Occupancy monitoring</li>
+        </ul>
+      </div>
+      <div class="iot-card">
+        <div style="font-size:18pt;margin-bottom:2mm;">🏥</div>
+        <h4>Healthcare IoT</h4>
+        <ul>
+          <li>Remote patient monitoring</li>
+          <li>Medical equipment tracking</li>
+          <li>Environmental sensing</li>
+          <li>Cold chain management</li>
+          <li>Emergency alert systems</li>
+        </ul>
+      </div>
+      <div class="iot-card">
+        <div style="font-size:18pt;margin-bottom:2mm;">🚚</div>
+        <h4>Fleet & Logistics</h4>
+        <ul>
+          <li>Real-time GPS tracking</li>
+          <li>Driver behaviour monitoring</li>
+          <li>Cold chain IoT monitoring</li>
+          <li>Fuel consumption analytics</li>
+          <li>Route optimisation</li>
+        </ul>
+      </div>
+      <div class="iot-card">
+        <div style="font-size:18pt;margin-bottom:2mm;">🌆</div>
+        <h4>Smart City</h4>
+        <ul>
+          <li>Smart street lighting</li>
+          <li>Waste management sensors</li>
+          <li>Water quality monitoring</li>
+          <li>Traffic flow optimisation</li>
+          <li>Public safety systems</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-heading">IoT Technology Stack</div>
+    <div class="tech-row">
+      <span class="pill">Raspberry Pi</span>
+      <span class="pill">Arduino</span>
+      <span class="pill">ESP32</span>
+      <span class="pill">MQTT</span>
+      <span class="pill">Node-RED</span>
+      <span class="pill">LoRaWAN</span>
+      <span class="pill">Zigbee</span>
+      <span class="pill">AWS IoT</span>
+      <span class="pill">Azure IoT Hub</span>
+      <span class="pill">InfluxDB</span>
+      <span class="pill">Grafana</span>
+      <span class="pill">GSM/4G</span>
+    </div>
+  </div>
+  <div class="chrome-bottom"><span>www.santos360tech.com</span><span class="pgnum">11 / 16</span></div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 12 — WHY CHOOSE US
+══════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="chrome-top">
+    <span class="brand">SANTOS 360 TECH SOLUTIONS</span>
+    <span class="section-tag">Competitive Advantage</span>
+  </div>
+  <div class="content">
+    <div style="margin-bottom:5mm;">
+      <div style="font-size:8pt;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--cyan);margin-bottom:2mm;">10 — Our Edge</div>
+      <div class="page-title display">Why Choose <span>Us</span></div>
+    </div>
+    <p class="body-text">At SANTOS 360 TECH SOLUTIONS, we combine technical depth with a client-first mindset to deliver unmatched value across every engagement.</p>
+
+    <div class="g3" style="margin-bottom:5mm;">
+      <div class="card" style="text-align:center;padding:5mm;">
+        <div style="font-size:24pt;margin-bottom:2mm;">👔</div>
+        <div style="font-size:10pt;font-weight:700;color:var(--white);margin-bottom:1.5mm;">Expert Team</div>
+        <p style="font-size:8.5pt;color:var(--slate);margin:0;line-height:1.55;">Highly skilled IT professionals with hands-on industry and research experience.</p>
+      </div>
+      <div class="card" style="text-align:center;padding:5mm;">
+        <div style="font-size:24pt;margin-bottom:2mm;">❤</div>
+        <div style="font-size:10pt;font-weight:700;color:var(--white);margin-bottom:1.5mm;">Client-Centered</div>
+        <p style="font-size:8.5pt;color:var(--slate);margin:0;line-height:1.55;">Solutions customized to each client's specific goals, budget, and operational context.</p>
+      </div>
+      <div class="card" style="text-align:center;padding:5mm;">
+        <div style="font-size:24pt;margin-bottom:2mm;">💡</div>
+        <div style="font-size:10pt;font-weight:700;color:var(--white);margin-bottom:1.5mm;">Innovation</div>
+        <p style="font-size:8.5pt;color:var(--slate);margin:0;line-height:1.55;">Modern technology and industry best practices applied to every project we take on.</p>
+      </div>
+      <div class="card" style="text-align:center;padding:5mm;">
+        <div style="font-size:24pt;margin-bottom:2mm;">🏷</div>
+        <div style="font-size:10pt;font-weight:700;color:var(--white);margin-bottom:1.5mm;">Affordable</div>
+        <p style="font-size:8.5pt;color:var(--slate);margin:0;line-height:1.55;">Quality services at competitive, transparent pricing tailored for African markets.</p>
+      </div>
+      <div class="card" style="text-align:center;padding:5mm;">
+        <div style="font-size:24pt;margin-bottom:2mm;">🎧</div>
+        <div style="font-size:10pt;font-weight:700;color:var(--white);margin-bottom:1.5mm;">24/7 Support</div>
+        <p style="font-size:8.5pt;color:var(--slate);margin:0;line-height:1.55;">Reliable after-sales support, maintenance, monitoring, and troubleshooting on demand.</p>
+      </div>
+      <div class="card" style="text-align:center;padding:5mm;">
+        <div style="font-size:24pt;margin-bottom:2mm;">🔐</div>
+        <div style="font-size:10pt;font-weight:700;color:var(--white);margin-bottom:1.5mm;">Security</div>
+        <p style="font-size:8.5pt;color:var(--slate);margin:0;line-height:1.55;">International security standards enforced at every layer of every solution we build.</p>
+      </div>
+    </div>
+
+    <!-- Differentiator highlight -->
+    <div class="card-accent" style="padding:4mm 5mm;">
+      <div class="g3" style="text-align:center;gap:3mm;">
+        <div style="padding:3mm 0;">
+          <div style="font-size:8.5pt;color:var(--cyan);font-weight:700;margin-bottom:1mm;">FULL-STACK</div>
+          <div style="font-size:9pt;color:var(--slateL);">From hardware to cloud — one partner handles it all</div>
+        </div>
+        <div style="border-left:1px solid var(--border);border-right:1px solid var(--border);padding:3mm 0;">
+          <div style="font-size:8.5pt;color:var(--cyan);font-weight:700;margin-bottom:1mm;">LOCAL EXPERTISE</div>
+          <div style="font-size:9pt;color:var(--slateL);">Deep understanding of East African business realities</div>
+        </div>
+        <div style="padding:3mm 0;">
+          <div style="font-size:8.5pt;color:var(--cyan);font-weight:700;margin-bottom:1mm;">END-TO-END OWNERSHIP</div>
+          <div style="font-size:9pt;color:var(--slateL);">We don't just build — we deploy, train, and maintain</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="chrome-bottom"><span>www.santos360tech.com</span><span class="pgnum">12 / 16</span></div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 13 — INDUSTRIES
+══════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="chrome-top">
+    <span class="brand">SANTOS 360 TECH SOLUTIONS</span>
+    <span class="section-tag">Industries We Serve</span>
+  </div>
+  <div class="content">
+    <div style="margin-bottom:5mm;">
+      <div style="font-size:8pt;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--cyan);margin-bottom:2mm;">11 — Sectors</div>
+      <div class="page-title display">Industries <span>We Serve</span></div>
+    </div>
+    <p class="body-text" style="margin-bottom:5mm;">Our solutions are industry-agnostic by design — adaptable to the unique regulatory, operational, and cultural needs of each sector.</p>
+
+    <div class="g4">
+      <div class="industry-chip"><div class="ic-icon">🏛</div><div class="ic-label">Government</div></div>
+      <div class="industry-chip"><div class="ic-icon">🎓</div><div class="ic-label">Universities</div></div>
+      <div class="industry-chip"><div class="ic-icon">🏫</div><div class="ic-label">Schools</div></div>
+      <div class="industry-chip"><div class="ic-icon">🏥</div><div class="ic-label">Hospitals</div></div>
+      <div class="industry-chip"><div class="ic-icon">🏦</div><div class="ic-label">Banks & Finance</div></div>
+      <div class="industry-chip"><div class="ic-icon">🤲</div><div class="ic-label">NGOs</div></div>
+      <div class="industry-chip"><div class="ic-icon">🏪</div><div class="ic-label">SMEs & Retail</div></div>
+      <div class="industry-chip"><div class="ic-icon">🏭</div><div class="ic-label">Manufacturing</div></div>
+      <div class="industry-chip"><div class="ic-icon">🌱</div><div class="ic-label">Agriculture</div></div>
+      <div class="industry-chip"><div class="ic-icon">🚚</div><div class="ic-label">Logistics</div></div>
+      <div class="industry-chip"><div class="ic-icon">📡</div><div class="ic-label">Telecoms</div></div>
+      <div class="industry-chip"><div class="ic-icon">⚡</div><div class="ic-label">Energy & Utilities</div></div>
+    </div>
+
+    <!-- Capability map -->
+    <div class="section-heading" style="margin-top:5mm;">Cross-Industry Capability Map</div>
+    <div style="overflow:auto;">
+      <table style="width:100%;border-collapse:collapse;font-size:8pt;">
+        <thead>
+          <tr style="background:var(--card);border-bottom:1px solid var(--borderM);">
+            <th style="padding:2.5mm 3mm;text-align:left;color:var(--cyan);font-weight:700;letter-spacing:0.08em;">Sector</th>
+            <th style="padding:2.5mm 3mm;text-align:center;color:var(--cyan);font-weight:700;">Software</th>
+            <th style="padding:2.5mm 3mm;text-align:center;color:var(--cyan);font-weight:700;">Security</th>
+            <th style="padding:2.5mm 3mm;text-align:center;color:var(--cyan);font-weight:700;">Cloud</th>
+            <th style="padding:2.5mm 3mm;text-align:center;color:var(--cyan);font-weight:700;">AI</th>
+            <th style="padding:2.5mm 3mm;text-align:center;color:var(--cyan);font-weight:700;">IoT</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--border);"><td style="padding:2mm 3mm;color:var(--slateL);">Government</td><td style="text-align:center;color:var(--cyan);">✓</td><td style="text-align:center;color:var(--cyan);">✓</td><td style="text-align:center;color:var(--cyan);">✓</td><td style="text-align:center;color:var(--cyan);">✓</td><td style="text-align:center;color:var(--slate);">—</td></tr>
+          <tr style="border-bottom:1px solid var(--border);background:rgba(13,34,64,0.4);"><td style="padding:2mm 3mm;color:var(--slateL);">Agriculture</td><td style="text-align:center;color:var(--cyan);">✓</td><td style="text-align:center;color:var(--slate);">—</td><td style="text-align:center;color:var(--cyan);">✓</td><td style="text-align:center;color:var(--cyan);">✓</td><td style="text-align:center;color:var(--cyan);">✓</td></tr>
+          <tr style="border-bottom:1px solid var(--border);"><td style="padding:2mm 3mm;color:var(--slateL);">Healthcare</td><td style="text-align:center;color:var(--cyan);">✓</td><td style="text-align:center;color:var(--cyan);">✓</td><td style="text-align:center;color:var(--cyan);">✓</td><td style="text-align:center;color:var(--cyan);">✓</td><td style="text-align:center;color:var(--cyan);">✓</td></tr>
+          <tr style="border-bottom:1px solid var(--border);background:rgba(13,34,64,0.4);"><td style="padding:2mm 3mm;color:var(--slateL);">Finance & Banking</td><td style="text-align:center;color:var(--cyan);">✓</td><td style="text-align:center;color:var(--cyan);">✓</td><td style="text-align:center;color:var(--cyan);">✓</td><td style="text-align:center;color:var(--cyan);">✓</td><td style="text-align:center;color:var(--slate);">—</td></tr>
+          <tr style="border-bottom:1px solid var(--border);"><td style="padding:2mm 3mm;color:var(--slateL);">Manufacturing</td><td style="text-align:center;color:var(--cyan);">✓</td><td style="text-align:center;color:var(--cyan);">✓</td><td style="text-align:center;color:var(--cyan);">✓</td><td style="text-align:center;color:var(--cyan);">✓</td><td style="text-align:center;color:var(--cyan);">✓</td></tr>
+          <tr style="background:rgba(13,34,64,0.4);"><td style="padding:2mm 3mm;color:var(--slateL);">Education</td><td style="text-align:center;color:var(--cyan);">✓</td><td style="text-align:center;color:var(--cyan);">✓</td><td style="text-align:center;color:var(--cyan);">✓</td><td style="text-align:center;color:var(--cyan);">✓</td><td style="text-align:center;color:var(--slate);">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="chrome-bottom"><span>www.santos360tech.com</span><span class="pgnum">13 / 16</span></div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 14 — PORTFOLIO
+══════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="chrome-top">
+    <span class="brand">SANTOS 360 TECH SOLUTIONS</span>
+    <span class="section-tag">Projects & Portfolio</span>
+  </div>
+  <div class="content">
+    <div style="margin-bottom:5mm;">
+      <div style="font-size:8pt;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--cyan);margin-bottom:2mm;">12 — Our Work</div>
+      <div class="page-title display">Projects <span>&</span> Portfolio</div>
+    </div>
+    <p class="body-text">A selection of successful deliverables spanning software systems, web platforms, AI research, and IoT deployments.</p>
+
+    <div class="g3" style="margin-bottom:5mm;">
+      <div class="card">
+        <div style="font-size:18pt;margin-bottom:2mm;">💻</div>
+        <div style="font-size:10pt;font-weight:700;color:var(--white);margin-bottom:2mm;">Software Systems</div>
+        <ul class="service-list">
+          <li>School Management System</li>
+          <li>Hospital Management System</li>
+          <li>MUST Housing Management System</li>
+          <li>Inventory Management System</li>
+          <li>Payroll & HR Platform</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div style="font-size:18pt;margin-bottom:2mm;">🌐</div>
+        <div style="font-size:10pt;font-weight:700;color:var(--white);margin-bottom:2mm;">Websites & Portals</div>
+        <ul class="service-list">
+          <li>Santos 360 Corporate Site</li>
+          <li>NGO Project Portals</li>
+          <li>Educational Platforms</li>
+          <li>E-Commerce Stores</li>
+          <li>Government Service Portals</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div style="font-size:18pt;margin-bottom:2mm;">🤖</div>
+        <div style="font-size:10pt;font-weight:700;color:var(--white);margin-bottom:2mm;">AI & Research</div>
+        <ul class="service-list">
+          <li>Tomato_ResB0 Disease Detector</li>
+          <li>Machine Learning Pipelines</li>
+          <li>Data Analytics Dashboards</li>
+          <li>NLP Text Classification</li>
+          <li>Computer Vision Applications</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-heading">Featured Project Spotlight</div>
+    <div style="background:linear-gradient(135deg,rgba(0,212,255,0.07),rgba(26,111,212,0.05));border:1px solid var(--borderM);border-radius:10px;padding:5mm;">
+      <div class="g2-3">
+        <div>
+          <div style="font-size:10pt;font-weight:700;color:var(--white);margin-bottom:2mm;">🌿 Tomato Leaf Disease Detection AI</div>
+          <p style="font-size:9pt;color:var(--slateL);line-height:1.65;margin:0 0 3mm;">CNN-based deep learning system using EfficientNetB0 + ResNet50 ensemble, trained on 16,011 images across 10 disease classes — deployed for Tanzania's agricultural sector.</p>
+          <div style="display:flex;gap:2mm;flex-wrap:wrap;">
+            <span class="pill">PyTorch</span>
+            <span class="pill">CNN</span>
+            <span class="pill">Gradio UI</span>
+            <span class="pill">Tanzania</span>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:2.5mm;">
+          <div class="card" style="text-align:center;padding:3mm;">
+            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:16pt;background:linear-gradient(110deg,var(--cyan),var(--blue));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">99.19%</div>
+            <div style="font-size:7.5pt;color:var(--slate);text-transform:uppercase;letter-spacing:0.1em;">Accuracy</div>
+          </div>
+          <div class="card" style="text-align:center;padding:3mm;">
+            <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:16pt;background:linear-gradient(110deg,var(--cyan),var(--blue));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">16,011</div>
+            <div style="font-size:7.5pt;color:var(--slate);text-transform:uppercase;letter-spacing:0.1em;">Training Images</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="chrome-bottom"><span>www.santos360tech.com</span><span class="pgnum">14 / 16</span></div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 15 — CSR
+══════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="chrome-top">
+    <span class="brand">SANTOS 360 TECH SOLUTIONS</span>
+    <span class="section-tag">Corporate Social Responsibility</span>
+  </div>
+  <div class="content">
+    <div style="margin-bottom:5mm;">
+      <div style="font-size:8pt;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--cyan);margin-bottom:2mm;">13 — Community Impact</div>
+      <div class="page-title display">Corporate <span>Social</span> Responsibility</div>
+    </div>
+    <p class="body-text">We believe technology should be a force for positive social change. SANTOS 360 TECH SOLUTIONS is committed to digital inclusion and building the next generation of African technology talent.</p>
+
+    <div class="g2">
+      <div>
+        <div class="csr-item">
+          <div class="csr-icon">🎓</div>
+          <div>
+            <div class="csr-title">ICT Training for Students</div>
+            <div class="csr-body">Free and subsidized programming and computing training for underprivileged students across Tanzania.</div>
+          </div>
+        </div>
+        <div class="csr-item">
+          <div class="csr-icon">💻</div>
+          <div>
+            <div class="csr-title">Digital Literacy Programs</div>
+            <div class="csr-body">Empowering communities with digital skills for participation in the modern economy and workforce.</div>
+          </div>
+        </div>
+        <div class="csr-item">
+          <div class="csr-icon">🚀</div>
+          <div>
+            <div class="csr-title">Youth Innovation Support</div>
+            <div class="csr-body">Mentoring young tech entrepreneurs through hackathons, startup incubation, and seed project funding.</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="csr-item">
+          <div class="csr-icon">📝</div>
+          <div>
+            <div class="csr-title">Technology Mentorship</div>
+            <div class="csr-body">Career guidance and technical mentorship for aspiring IT professionals and university students.</div>
+          </div>
+        </div>
+        <div class="csr-item">
+          <div class="csr-icon">🤝</div>
+          <div>
+            <div class="csr-title">Community Software</div>
+            <div class="csr-body">Developing free tools and management systems for local NGOs and community-based organisations.</div>
+          </div>
+        </div>
+        <div class="csr-item">
+          <div class="csr-icon">🌿</div>
+          <div>
+            <div class="csr-title">Environmental Sustainability</div>
+            <div class="csr-body">Promoting paperless office adoption and energy-efficient digital infrastructure to reduce carbon footprints.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:4mm;background:linear-gradient(135deg,rgba(0,212,255,0.06),rgba(26,111,212,0.04));border:1px solid var(--border);border-radius:10px;padding:4mm 5mm;text-align:center;">
+      <p style="font-size:10pt;color:var(--slateL);line-height:1.7;margin:0;">Our CSR commitment is not a programme — it is embedded in our identity. Every project we complete strengthens our community's digital future.</p>
+    </div>
+  </div>
+  <div class="chrome-bottom"><span>www.santos360tech.com</span><span class="pgnum">15 / 16</span></div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     PAGE 16 — CONTACT (BACK COVER)
+══════════════════════════════════════════════════════════ -->
+<div class="page" style="background:linear-gradient(160deg,#020C1A 0%,#061626 60%,#082035 100%);">
+  <!-- Grid -->
+  <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(0,212,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,0.025) 1px,transparent 1px);background-size:14mm 14mm;pointer-events:none;"></div>
+
+  <!-- Top accent -->
+  <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--cyan),var(--blue),transparent);"></div>
+
+  <!-- Glow -->
+  <div style="position:absolute;bottom:0;right:-60px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(0,212,255,0.09),transparent);pointer-events:none;"></div>
+
+  <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:297mm;padding:18mm;">
+
+    <div style="font-size:8pt;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:3mm;text-align:center;">14 — Connect With Us</div>
+    <div class="page-title display" style="font-size:30pt;text-align:center;margin-bottom:2mm;">Contact <span>Information</span></div>
+    <p style="font-size:11pt;color:var(--cyan);letter-spacing:0.1em;margin-bottom:8mm;text-align:center;">Let's Build the Future Together</p>
+
+    <!-- Contact card -->
+    <div style="width:100%;max-width:148mm;background:rgba(13,34,64,0.7);border:1px solid var(--borderM);border-radius:14px;padding:7mm 8mm;backdrop-filter:blur(10px);margin-bottom:6mm;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:4mm;">
+        <div style="display:flex;gap:3mm;align-items:flex-start;">
+          <div style="font-size:14pt;flex-shrink:0;margin-top:1px;">📍</div>
+          <div>
+            <div style="font-size:7.5pt;text-transform:uppercase;letter-spacing:0.12em;color:var(--cyan);font-weight:700;margin-bottom:1mm;">Location</div>
+            <div style="font-size:10pt;color:var(--white);">Tanzania, East Africa</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:3mm;align-items:flex-start;">
+          <div style="font-size:14pt;flex-shrink:0;margin-top:1px;">✉</div>
+          <div>
+            <div style="font-size:7.5pt;text-transform:uppercase;letter-spacing:0.12em;color:var(--cyan);font-weight:700;margin-bottom:1mm;">Email</div>
+            <div style="font-size:10pt;color:var(--white);">info@santos360tech.com</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:3mm;align-items:flex-start;">
+          <div style="font-size:14pt;flex-shrink:0;margin-top:1px;">📱</div>
+          <div>
+            <div style="font-size:7.5pt;text-transform:uppercase;letter-spacing:0.12em;color:var(--cyan);font-weight:700;margin-bottom:1mm;">Phone</div>
+            <div style="font-size:10pt;color:var(--white);">+255 XXX XXX XXX</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:3mm;align-items:flex-start;">
+          <div style="font-size:14pt;flex-shrink:0;margin-top:1px;">🌐</div>
+          <div>
+            <div style="font-size:7.5pt;text-transform:uppercase;letter-spacing:0.12em;color:var(--cyan);font-weight:700;margin-bottom:1mm;">Website</div>
+            <div style="font-size:10pt;color:var(--white);">www.santos360tech.com</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:5mm;padding-top:4mm;border-top:1px solid var(--border);">
+        <div style="font-size:7.5pt;text-transform:uppercase;letter-spacing:0.12em;color:var(--cyan);font-weight:700;margin-bottom:3mm;text-align:center;">Follow Us</div>
+        <div style="display:flex;justify-content:center;gap:3mm;">
+          <div style="width:36px;height:36px;border-radius:50%;background:rgba(0,212,255,0.15);border:1px solid rgba(0,212,255,0.3);display:flex;align-items:center;justify-content:center;font-size:13pt;">📘</div>
+          <div style="width:36px;height:36px;border-radius:50%;background:rgba(0,212,255,0.15);border:1px solid rgba(0,212,255,0.3);display:flex;align-items:center;justify-content:center;font-size:13pt;">💼</div>
+          <div style="width:36px;height:36px;border-radius:50%;background:rgba(0,212,255,0.15);border:1px solid rgba(0,212,255,0.3);display:flex;align-items:center;justify-content:center;font-size:13pt;">📸</div>
+          <div style="width:36px;height:36px;border-radius:50%;background:rgba(0,212,255,0.15);border:1px solid rgba(0,212,255,0.3);display:flex;align-items:center;justify-content:center;font-size:13pt;">🐱</div>
+          <div style="width:36px;height:36px;border-radius:50%;background:rgba(0,212,255,0.15);border:1px solid rgba(0,212,255,0.3);display:flex;align-items:center;justify-content:center;font-size:13pt;">🐦</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Closing quote -->
+    <div style="max-width:130mm;text-align:center;margin-bottom:8mm;">
+      <div style="font-size:18pt;color:var(--cyan);opacity:0.3;font-family:Georgia;line-height:1;margin-bottom:2mm;">"</div>
+      <p style="font-size:11pt;color:var(--slateL);font-style:italic;line-height:1.7;margin:0;">Building Smart Solutions for a Digital Future.</p>
+    </div>
+
+    <div style="font-size:9pt;color:rgba(139,165,192,0.4);letter-spacing:0.06em;">© 2026 SANTOS 360 TECH SOLUTIONS · All Rights Reserved</div>
+  </div>
+
+  <!-- Bottom accent -->
+  <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--blue),var(--cyan),transparent);"></div>
+</div>
+
+
+</body>
+</html>
